@@ -20,5 +20,19 @@ public class Library {
     public int getPublications() {
         return publications.size();
     }
+
+    // Method to check if a publication is available based on its ISBN
+    public boolean isBookAvailable(String isbnCode) throws Exception {
+        for (Book publication : publications) {
+            if (publication.getIsbnCode().equals(isbnCode)) {
+                if (publication.isAvailableStatus()) {
+                    return true;
+                } else {
+                    throw new Exception("Publication is Not Available");
+                }
+            }
+        }
+        throw new Exception("Publication with ISBN " + isbnCode + " does not exist in the library.");
+    }
 }
 
