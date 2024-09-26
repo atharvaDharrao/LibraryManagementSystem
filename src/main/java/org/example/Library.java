@@ -64,5 +64,15 @@ public class Library {
         throw new Exception("Publication with ISBN " + isbnCode + " does not exist in the library.");
     }
 
+    // Method to print a list of all available publications in the library
+    public void printAvailableBooks() {
+        System.out.println("List of available publications:");
+        for (Book publication : publications) {
+            if (publication.isAvailableStatus()) {
+                System.out.println(publication);
+            }
+        }
+    }
+
 }
 
