@@ -57,4 +57,13 @@ public class LibraryTest {
         });
         assertEquals("Publication is Not Available", exception.getMessage());
     }
+
+    // Test case to check issuing a publication that doesn't exist
+    @Test
+    public void testIssueNonExistentBook() {
+        Exception exception = assertThrows(Exception.class, () -> {
+            library.issueBook("978-1111111111");
+        });
+        assertEquals("Publication with ISBN 978-1111111111 does not exist in the library.", exception.getMessage());
+    }
 }
