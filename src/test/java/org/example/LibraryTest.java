@@ -74,4 +74,13 @@ public class LibraryTest {
         library.returnBook("978-0134685991");
         assertTrue(publication1.isAvailableStatus(), "Effective Java should be marked as available after returning.");
     }
+
+    // Test case to check returning a publication that was not issued
+    @Test
+    public void testReturnNonIssuedBook() {
+        Exception exception = assertThrows(Exception.class, () -> {
+            library.returnBook("978-0132350884");
+        });
+        assertEquals("The publication was not issued, so it cannot be returned.", exception.getMessage());
+    }
 }
