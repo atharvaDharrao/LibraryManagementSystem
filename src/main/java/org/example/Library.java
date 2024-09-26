@@ -34,5 +34,19 @@ public class Library {
         }
         throw new Exception("Publication with ISBN " + isbnCode + " does not exist in the library.");
     }
+
+    // Method to issue a publication based on ISBN
+    public void issueBook(String isbnCode) throws Exception {
+        if (isBookAvailable(isbnCode)) {
+            for (Book publication : publications) {
+                if (publication.getIsbnCode().equals(isbnCode)) {
+                    publication.setAvailableStatus(false);
+                    System.out.println("The publication with ISBN " + isbnCode + " has been issued.");
+                    return;
+                }
+            }
+        }
+    }
+
 }
 
